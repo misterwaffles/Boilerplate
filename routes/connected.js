@@ -62,7 +62,7 @@ function findMovies(friends) {
             var movies = res.data;
             movieData[friends[x]] = res.data;
             //console.log("after adding: " + Object.keys(movieData).length + "and the ID was " + friends[x]);
-            //console.log("MOVIES HERE IS " + movieData[currID]);
+            console.log("MOVIES HERE IS " + movieData[friends[x]]);
 
 
             x++;
@@ -135,8 +135,7 @@ function doneSorting(movies) {
 function findCommonMovies(friends, movies) {
     var resultsMap = {};
     x = friends.length;
-    for (movie in movieData)
-    console.log(movie);
+
 
    // console.log("FRIENDS LENGTH = " + x);
     //for (friend in friends) 
