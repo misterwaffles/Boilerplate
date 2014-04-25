@@ -150,7 +150,7 @@ function findCommonMovies(friends, movies) {
         //graph.get("/" + currID + "/movies", function (err, res) {
             
             var currMovies = movieData[currID];//use results of previous get
-            console.log("CURR MOVIES = " + currMovies[0]);
+            console.log("CURR MOVIES = " + currMovies[0][0]);
             x--;
         
             for (var j = 0; j < movies.length; j++) {
