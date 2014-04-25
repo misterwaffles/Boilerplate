@@ -159,10 +159,10 @@ function findCommonMovies(friends, movies) {
             x--;
         
             for (var j = 0; j < movies.length; j++) {
-                console.log(movies[j][0]); 
-                //var index = currMovies.indexOf(movies[j].name);
-                //if (index != -1) 
-                //console.log(index);
+                //console.log(movies[j][0]); 
+                var index = currMovies.indexOf(movies[j][0]);
+                if (index != -1) 
+                console.log(index);
                 
                 /*
                 if (index >= 0) { //this movie exists in this friend's likes
