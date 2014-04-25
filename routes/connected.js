@@ -141,8 +141,8 @@ function findCommonMovies(friends, movies) {
     //for (friend in friends) 
     //console.log("MOVIE DATA: " + movieData[friend]);
     for (var i = 0; i < friends.length; i++) {
-        var currID = friends[i];
-                            console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
+        var currID = myFriends[i];
+                            //console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
 
             //console.log("DURING THE METHOD adding: " + movieData[currID]);
 
@@ -150,7 +150,7 @@ function findCommonMovies(friends, movies) {
         //graph.get("/" + currID + "/movies", function (err, res) {
             
             var currMovies = movieData[currID];//use results of previous get
-            //console.log("CURR MOVIES = " + );
+            console.log("CURR MOVIES = " + currMovies[0]);
             x--;
         
             for (var j = 0; j < movies.length; j++) {
