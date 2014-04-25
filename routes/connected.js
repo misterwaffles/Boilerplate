@@ -62,7 +62,6 @@ function findMovies(friends) {
             var movies = res.data;
             movieData[friends[x]] = res.data;
             //console.log("after adding: " + Object.keys(movieData).length + "and the ID was " + friends[x]);
-            console.log("MOVIES HERE IS " + movieData[friends[x]]);
 
 
             x++;
@@ -114,6 +113,8 @@ function doneSorting(movies) {
     var top25 = [];
     for (var i = 0; i < 25; i++) {
         top25.push(movies[i]);
+                    console.log("MOVIES HERE IS " + movieData[friends[i]]);
+
     }
     for (friend in myFriends) 
     //console.log("before calling commonMovies " + movieData.length);
