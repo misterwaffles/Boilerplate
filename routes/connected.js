@@ -135,7 +135,7 @@ function doneSorting(movies) {
 function findCommonMovies(friends, movies) {
     var resultsMap = {};
     x = friends.length;
-    console.log(movieData[friends[x-1]]);
+    console.log(movieData[friends[x-5]]);
 
    // console.log("FRIENDS LENGTH = " + x);
     //for (friend in friends) 
