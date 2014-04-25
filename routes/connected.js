@@ -113,7 +113,7 @@ function doneSorting(movies) {
     var top25 = [];
     for (var i = 0; i < 25; i++) {
         top25.push(movies[i]);
-                    console.log("MOVIES HERE IS " + movieData[friends[i]]);
+                    console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
 
     }
     for (friend in myFriends) 
