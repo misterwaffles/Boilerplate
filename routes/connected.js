@@ -154,12 +154,12 @@ function findCommonMovies(friends, movies) {
             if (temp === undefined) continue;
             if (temp !== undefined) {
                 
-                console.log("CURR MOVIES = " + temp.name);
+                //console.log("CURR MOVIES = " + temp.name);
             }
             x--;
         
             for (var j = 0; j < movies.length; j++) {
-                console.log(movies[j]);
+                console.log(movies[j]); 
                 //var index = currMovies.indexOf(movies[j].name);
                 //if (index != -1) 
                 //console.log(index);
