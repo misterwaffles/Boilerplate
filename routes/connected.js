@@ -136,6 +136,7 @@ function findCommonMovies(friends, movies) {
     dependencyMaps = [];
     var resultsMap = {};
     x = friends.length;
+        var currMap = {};
 
 
    // console.log("FRIENDS LENGTH = " + x);
@@ -145,7 +146,6 @@ function findCommonMovies(friends, movies) {
                 currMap[movies[z][0]] = 0; //initialize everything to 0
             }
     for (var i = 0; i < friends.length; i++) {
-        var currMap = {};
         var currID = myFriends[i];
                             //console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
 
