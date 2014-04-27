@@ -141,6 +141,7 @@ function findCommonMovies(friends, movies) {
     //for (friend in friends) 
     //console.log("MOVIE DATA: " + movieData[friend]);
     for (var i = 0; i < friends.length; i++) {
+        var currMap = {};
         var currID = myFriends[i];
                             //console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
 
@@ -157,35 +158,27 @@ function findCommonMovies(friends, movies) {
                 //console.log("CURR MOVIES = " + temp.name);
             }
             x--;
+            for (var z = 0; z < movies.length; z++) {
+                currMap[movies[z][0]] = 0; //initialize everything to 0
+            }
         
             for (var j = 0; j < movies.length; j++) {
                 //console.log(movies[j][0]); 
                 for (var k = 0; k < currMovies.length; k++) { 
                     if (currMovies[k].name.localeCompare(movies[j][0]) === 0) {
-                        console.log(currMovies[k].name + " is the same as " + movies[j][0]);
+                        //found a movie that is common.
+                        currMap[movies[j][0]] = 1; //otherwise will be left at 0
+                        //push a 1 into the map for that current movie
+                        break; //no need to check more movies
+                        //console.log(currMovies[k].name + " is the same as " + movies[j][0]);
                     }
                 }// end k loop
                 
-                //var index = currMovies.indexOf(movies[j][0]);
-                //if (index != -1) 
-                //console.log(index);
+
+                console.log(currMap);
+                break;
                 
-                /*
-                if (index >= 0) { //this movie exists in this friend's likes
-                    
-                    for (var k = 0; k < movies.length; k++) { //check for other common movies that they've liked
-                        var curr = currMovies.indexOf(movies[k]);
-                        
-                        if (curr >= 0) {
-                            //the user liked movies[k].name as well
-                            resultsMap[movies[j].name].push(movies[k].name);
-                        }     
-                    }
-                    //keep track of it here
-                }*/
-                //if the movie is the same as one of the 25 listed, then keep track of it
-                
-            }
+            } //end j loop
         
     
     
