@@ -160,9 +160,15 @@ function findCommonMovies(friends, movies) {
         
             for (var j = 0; j < movies.length; j++) {
                 //console.log(movies[j][0]); 
-                var index = currMovies.indexOf(movies[j][0]);
+                for (var k = 0; k < currMovies.length; k++) { 
+                    if (currMovies[k].name.localeCompare(movies[j][0])) {
+                        console.log(currMovies[k].name + " is the same as " + movies[j][0]);
+                    
+                }// end k loop
+                
+                //var index = currMovies.indexOf(movies[j][0]);
                 if (index != -1) 
-                console.log(index);
+                //console.log(index);
                 
                 /*
                 if (index >= 0) { //this movie exists in this friend's likes
