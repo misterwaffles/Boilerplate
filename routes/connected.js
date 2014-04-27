@@ -131,8 +131,9 @@ function doneSorting(movies) {
 
     //document.getElementById("loading").hide();
 }
-
+var dependencyMap;
 function findCommonMovies(friends, movies) {
+    dependencyMaps = [];
     var resultsMap = {};
     x = friends.length;
 
@@ -175,20 +176,20 @@ function findCommonMovies(friends, movies) {
                 }// end k loop
                 
 
-                console.log(currMap);
-                break;
+                //console.log(currMap);
                 
             } //end j loop
         
-    
+            dependencyMaps.push(currMap);
     
             if (x == 0) { //to make sure it's only executed once
                 //console.log("results map is " + resultsMap);
                 //return resultsMap;
+                console.log(dependencyMaps);
+                console.log("done");
             }
-            //console.log("here");
-        //}); //end get movies
-    }
+
+    } //end i loop
 }
 function displayPage(movies, tweets) {
 
