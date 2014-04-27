@@ -133,11 +133,14 @@ function doneSorting(movies) {
 }
 var dependencyMap;
 function findCommonMovies(friends, movies) {
-    dependencyMaps = [];
+    dependencyMaps = {};
     var resultsMap = {};
     x = friends.length;
     var currMap = {};
 
+    for (var z = 0; z < movies.length; z++) {
+        dependecyMaps[movies[z][0]] = []; //initialize the properties as arrays   
+    }
 
    // console.log("FRIENDS LENGTH = " + x);
     //for (friend in friends) 
@@ -162,6 +165,7 @@ function findCommonMovies(friends, movies) {
             x--;
             
             var found = false;
+            var thismovie;
             for (var z = 0; z < movies.length; z++) {
                 currMap[movies[z][0]] = 0; //initialize everything to 0
             }
@@ -171,6 +175,7 @@ function findCommonMovies(friends, movies) {
                 for (var k = 0; k < currMovies.length; k++) { 
                     if (currMovies[k].name.localeCompare(movies[j][0]) === 0) {
                         found = true
+                        thismovie = movies[j][0];
                         //found a movie that is common.
                         currMap[movies[j][0]]++; //otherwise will be left at 0
                         //push a 1 into the map for that current movie
@@ -187,7 +192,8 @@ function findCommonMovies(friends, movies) {
         
             if (found === true) {
                 //then store this list becuase there are dependencies
-                console.log(currMap);
+                //console.log(currMap);
+                dependencyMaps[thismovie].push(currMap);
                 
             }
 
@@ -201,7 +207,7 @@ function findCommonMovies(friends, movies) {
 
 
     } //end i loop
-                                        console.log(currMap);
+                    console.log(dependencyMaps);
 
                     console.log("done");
 
