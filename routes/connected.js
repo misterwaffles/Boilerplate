@@ -167,7 +167,7 @@ function findCommonMovies(friends, movies) {
                 }// end k loop
                 
                 //var index = currMovies.indexOf(movies[j][0]);
-                if (index != -1) 
+                //if (index != -1) 
                 //console.log(index);
                 
                 /*
