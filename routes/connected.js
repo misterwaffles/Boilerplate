@@ -161,7 +161,7 @@ function findCommonMovies(friends, movies) {
             for (var j = 0; j < movies.length; j++) {
                 //console.log(movies[j][0]); 
                 for (var k = 0; k < currMovies.length; k++) { 
-                    if (currMovies[k].name.localeCompare(movies[j][0])) {
+                    if (currMovies[k].name.localeCompare(movies[j][0]) === 0) {
                         console.log(currMovies[k].name + " is the same as " + movies[j][0]);
                     }
                 }// end k loop
