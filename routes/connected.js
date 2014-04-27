@@ -169,7 +169,7 @@ function findCommonMovies(friends, movies) {
                 for (var k = 0; k < currMovies.length; k++) { 
                     if (currMovies[k].name.localeCompare(movies[j][0]) === 0) {
                         //found a movie that is common.
-                        currMap[movies[j][0]] = 1; //otherwise will be left at 0
+                        currMap[movies[j][0]]++; //otherwise will be left at 0
                         //push a 1 into the map for that current movie
                         break; //no need to check more movies
                         //console.log(currMovies[k].name + " is the same as " + movies[j][0]);
@@ -188,10 +188,11 @@ function findCommonMovies(friends, movies) {
                 //console.log(dependencyMaps);
             }
         
-                                    console.log(currMap);
 
 
     } //end i loop
+                                        console.log(currMap);
+
                     console.log("done");
 
 
