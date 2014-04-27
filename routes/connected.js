@@ -142,9 +142,7 @@ function findCommonMovies(friends, movies) {
    // console.log("FRIENDS LENGTH = " + x);
     //for (friend in friends) 
     //console.log("MOVIE DATA: " + movieData[friend]);
-    for (var z = 0; z < movies.length; z++) {
-            currMap[movies[z][0]] = 0; //initialize everything to 0
-        }
+    
     for (var i = 0; i < friends.length; i++) {
         var currID = myFriends[i];
                             //console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
@@ -162,12 +160,17 @@ function findCommonMovies(friends, movies) {
                 //console.log("CURR MOVIES = " + temp.name);
             }
             x--;
-
+            
+            var found = false;
+            for (var z = 0; z < movies.length; z++) {
+                currMap[movies[z][0]] = 0; //initialize everything to 0
+            }
         
             for (var j = 0; j < movies.length; j++) {
                 //console.log(movies[j][0]); 
                 for (var k = 0; k < currMovies.length; k++) { 
                     if (currMovies[k].name.localeCompare(movies[j][0]) === 0) {
+                        found = true
                         //found a movie that is common.
                         currMap[movies[j][0]]++; //otherwise will be left at 0
                         //push a 1 into the map for that current movie
@@ -175,11 +178,18 @@ function findCommonMovies(friends, movies) {
                         //console.log(currMovies[k].name + " is the same as " + movies[j][0]);
                     }
                 }// end k loop
+            
                 
 
                 //console.log(currMap);
                 
             } //end j loop
+        
+            if (found === true) {
+                //then store this list becuase there are dependencies
+                console.log(currMap);
+                
+            }
 
     
             if (x == 0) { //to make sure it's only executed once
