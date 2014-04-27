@@ -119,11 +119,31 @@ function doneSorting(movies) {
     //console.log("before calling commonMovies " + movieData.length);
     var commonMovies = findCommonMovies(myFriends, top25);
     
-    for (var i = 0; i < movies.length; i++) { //convert to JSON
+    //console.log(commonMovies); //this is happening correctly.
+    
+    
+    
+    for (var i = 0; i < 25; i++) { //convert to JSON
         var curr = movies[i];
-        if (curr[1] > 3) 
-        result.list.push({"title": curr[0], "likes": curr[1]});
+        
+        var tempMap = commonMovies[curr[0]];
+        var currCommon = [];
+        
+        for (var j = 0; j < 25; j++) {
+            var currMovie = top25[j][0];
+            //console.log(currMovie);
+            if (tempMap[currMovie] === undefined) 
+                currCommon.push(0);
+            else
+                currCommon.push(tempMap[currMovie]);
+        }
+        
+       // console.log(currCommon);
+
+        result.list.push({"title": curr[0], "likes": curr[1], "common": currCommon});
+       // console.log("done with " + i);
     }
+
     
     gres.render('connected', result);
 
@@ -163,7 +183,7 @@ function findCommonMovies(friends, movies) {
                 
                 //console.log("CURR MOVIES = " + temp.name);
             }
-            x--;
+           // x--;
             
             var found = false;
             var thismovie;
@@ -194,37 +214,21 @@ function findCommonMovies(friends, movies) {
         
         for (movie in currMap) {
             var tempMap = dependencyMaps[movie];
-            
+            if (tempMap[movie] >= 0) {}
+            else tempMap[movie] = 0;
             for (movie2 in currMap) {
                 if (tempMap[movie2] >= 0 && currMap[movie2] > 0 && currMap[movie] > 0) tempMap[movie2]++;
-                else if (currMap[movie2] > 0 && currMap[movie] > 0) tempMap[movie2] = 0;   
+                else if (currMap[movie2] > 0 && currMap[movie] > 0) tempMap[movie2] = 1;   
             }
             //var currTempMap = tempMap[movie];
             
         }
         
-        if (found === true) {
-                //then store this list becuase there are dependencies
-                //console.log(currMap);
-                //dependencyMaps[thismovie].push(currMap);
-                
-            }
-
-    
-            if (x == 0) { //to make sure it's only executed once
-                //console.log("results map is " + resultsMap);
-                //return resultsMap;
-                //console.log(dependencyMaps);
-            }
-        
-
 
     } //end i loop
-                    console.log(dependencyMaps);
-
-                    console.log("done");
 
 
+    return dependencyMaps;
 }
 function displayPage(movies, tweets) {
 
