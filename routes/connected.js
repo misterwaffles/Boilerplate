@@ -187,9 +187,11 @@ function findCommonMovies(friends, movies) {
                 //return resultsMap;
                 //console.log(dependencyMaps);
             }
+        
+                                    console.log(currMap);
+
 
     } //end i loop
-                            console.log(currMap);
                     console.log("done");
 
 
