@@ -131,15 +131,15 @@ function doneSorting(movies) {
 
     //document.getElementById("loading").hide();
 }
-//var dependencyMaps;
+var dependencyMaps;
 function findCommonMovies(friends, movies) {
-    var dependencyMaps = {};
+    dependencyMaps = {};
     var resultsMap = {};
     x = friends.length;
     var currMap = {};
 
     for (var z = 0; z < movies.length; z++) {
-        dependecyMaps[movies[z][0]] = []; //initialize the properties as arrays   
+        dependencyMaps[movies[z][0]] = []; //initialize the properties as arrays   
     }
 
    // console.log("FRIENDS LENGTH = " + x);
