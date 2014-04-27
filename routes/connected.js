@@ -115,7 +115,7 @@ function doneSorting(movies) {
         top25.push(movies[i]);
 
     }
-    for (friend in myFriends) 
+    //for (friend in myFriends) 
     //console.log("before calling commonMovies " + movieData.length);
     var commonMovies = findCommonMovies(myFriends, top25);
     
@@ -136,10 +136,10 @@ function findCommonMovies(friends, movies) {
     dependencyMaps = {};
     var resultsMap = {};
     x = friends.length;
-    var currMap = {};
+    //var currMap = {};
 
     for (var z = 0; z < movies.length; z++) {
-        dependencyMaps[movies[z][0]] = []; //initialize the properties as arrays   
+        dependencyMaps[movies[z][0]] = {}; //initialize the properties as objects/maps   
     }
 
    // console.log("FRIENDS LENGTH = " + x);
@@ -147,6 +147,7 @@ function findCommonMovies(friends, movies) {
     //console.log("MOVIE DATA: " + movieData[friend]);
     
     for (var i = 0; i < friends.length; i++) {
+        var currMap = {};
         var currID = myFriends[i];
                             //console.log("MOVIES HERE IS " + movieData[myFriends[i]]);
 
@@ -186,14 +187,26 @@ function findCommonMovies(friends, movies) {
             
                 
 
-                //console.log(currMap);
                 
             } //end j loop
+                //console.log(currMap); //CURRMAP BEING UPDATED CORRECTLY
+
         
-            if (found === true) {
+        for (movie in currMap) {
+            var tempMap = dependencyMaps[movie];
+            
+            for (movie2 in currMap) {
+                if (tempMap[movie2] >= 0 && currMap[movie2] > 0 && currMap[movie] > 0) tempMap[movie2]++;
+                else if (currMap[movie2] > 0 && currMap[movie] > 0) tempMap[movie2] = 0;   
+            }
+            //var currTempMap = tempMap[movie];
+            
+        }
+        
+        if (found === true) {
                 //then store this list becuase there are dependencies
                 //console.log(currMap);
-                dependencyMaps[thismovie].push(currMap);
+                //dependencyMaps[thismovie].push(currMap);
                 
             }
 
