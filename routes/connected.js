@@ -131,7 +131,7 @@ function doneSorting(movies) {
 
     //document.getElementById("loading").hide();
 }
-var dependencyMap;
+var dependencyMaps;
 function findCommonMovies(friends, movies) {
     dependencyMaps = {};
     var resultsMap = {};
