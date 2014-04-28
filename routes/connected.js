@@ -132,10 +132,10 @@ function doneSorting(movies) {
         for (var j = 0; j < 25; j++) {
             var currMovie = top25[j][0];
             //console.log(currMovie);
-            if (tempMap[currMovie] === undefined) 
+            if (tempMap[currMovie] === undefined || tempMap[currMovie] < 10) 
                 currCommon.push(0);
             else
-                currCommon.push(tempMap[currMovie]);
+                currCommon.push(1);
         }
         
        // console.log(currCommon);

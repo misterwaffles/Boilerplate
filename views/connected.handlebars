@@ -77,6 +77,9 @@
     </div>
     
     <div id="container">
+        
+            <div id="chart_placeholder"></div>
+
     <table id="results">
         <tr id="header">
             <th>Movie Title</th>
@@ -87,21 +90,24 @@
             <tr>
                 <td>{{title}}</td>
                 <td>{{likes}}</td>
-                <td>{{common}}</td>
+                <td class="dep">{{common}}</td>
             </tr>
         {{/each}}
     </table>
     </div>
 
-    <div id="chart_placeholder"></div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
    <script src="http://d3js.org/d3.v3.min.js"></script>
       <script src="js/d3.dependencyWheel.js"></script>
     <script type=text/javascript> 
+    
     //alert("hi");
-    var chart = d3.chart.dependencyWheel();
+    var chart = d3.chart.dependencyWheel()
+    .width(800)    // also used for height, since the wheel is in a a square
+    .margin(240)   // used to display package names
+    .padding(.25); // separating groups in the wheel;
     var package = [];
     var dependencyMatrix = [];
     var movies = [];
@@ -120,13 +126,13 @@
     }
     
     //alert(movies);
-   //alert(dependencyMatrix.length);
+  // alert(dependencyMatrix[0]);
 
     var data = {
         
         packageNames: movies,
          matrix: dependencyMatrix
-        };
+    };
     
     d3.select('#chart_placeholder')
     .datum(data)
