@@ -135,7 +135,7 @@ function doneSorting(movies) {
             if (tempMap[currMovie] === undefined || tempMap[currMovie] < 5) 
                 currCommon.push(0);
             else
-                currCommon.push(1);
+                currCommon.push(tempMap[currMovie]);
         }
         
        // console.log(currCommon);
