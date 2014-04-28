@@ -113,7 +113,7 @@
     var movies = [];
     
     for (var i = 1; i < 26; i++) { //skip the header
-        //dependencyMatrix[i-1] = [];
+        dependencyMatrix[i-1] = [];
         
         var temp = document.getElementById("results").rows[i].cells;
         movies.push(temp[0].innerHTML);
@@ -127,12 +127,19 @@
     
     //alert(movies);
   // alert(dependencyMatrix[0]);
-
+/*
     var data = {
         
         packageNames: movies,
          matrix: dependencyMatrix
-    };
+    };*/
+    
+    var data = {
+  packageNames: ['Main', 'A', 'B'],
+  matrix: [[0, 1, 1], // Main depends on A and B
+           [0, 0, 1], // A depends on B
+           [0, 0, 0]] // B doesn't depend on A or Main
+};
     
     d3.select('#chart_placeholder')
     .datum(data)
