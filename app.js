@@ -126,7 +126,7 @@ var conf = {
     client_id:      '484197295013302'
   , client_secret:  '3b6dea2d1ecf2e4a101039a280f6d1ad'
   , scope:          'email, read_stream, user_status, friends_likes, user_interests, friends_interests, user_actions.video, user_likes'
-  , redirect_uri:   'http://contempo.herokuapp.com/connect'
+  , redirect_uri:   'http://localhost:3000/connect'
 };
 console.log(global.token);
 

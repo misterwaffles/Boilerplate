@@ -19,6 +19,54 @@
       <link rel="stylesheet" type="text/css" href="css/connected.css">
         
       <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+.node {
+  font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  fill: #bbb;
+}
+
+.node:hover {
+  fill: #000;
+}
+
+.link {
+  stroke: steelblue;
+  stroke-opacity: .4;
+  fill: none;
+  pointer-events: none;
+}
+
+.node:hover,
+.node--source,
+.node--target {
+  font-weight: 700;
+}
+
+.node--source {
+  fill: #2ca02c;
+}
+
+.node--target {
+  fill: #d62728;
+}
+
+.link--source,
+.link--target {
+  stroke-opacity: 1;
+  stroke-width: 2px;
+}
+
+.link--source {
+  stroke: #d62728;
+}
+
+.link--target {
+  stroke: #2ca02c;
+}
+
+</style>
+    
 </head>
 
 <body>
@@ -31,24 +79,65 @@
     <div id="container">
     <table id="results">
         <tr id="header">
-            <td>Movie Title</td>
-            <td>Likes</td>
+            <th>Movie Title</th>
+            <th>Likes</th>
+            <th>Dependencies</th>
         </tr>
         {{#each list}}
             <tr>
                 <td>{{title}}</td>
                 <td>{{likes}}</td>
+                <td>{{common}}</td>
             </tr>
         {{/each}}
     </table>
     </div>
 
+    <div id="chart_placeholder"></div>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
-            //$("#loading").hide();
+   <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="js/d3.dependencyWheel.js"></script>
+    <script type=text/javascript> 
+    //alert("hi");
+    var chart = d3.chart.dependencyWheel();
+    var package = [];
+    var dependencyMatrix = [];
+    var movies = [];
+    
+    for (var i = 1; i < 26; i++) { //skip the header
+        dependencyMatrix[i-1] = [];
         
+        var temp = document.getElementById("results").rows[i].cells;
+        movies.push(temp[0].innerHTML);
+        var dep = temp[2].innerHTML.split(",");
+        //alert(temp[2].innerHTML[0]);
+        //alert(dep[0]);
+        for (var j = 0; j < 25; j++) {
+            dependencyMatrix[i-1].push(dep[j]);
+        }
+    }
+    
+    //alert(movies);
+   //alert(dependencyMatrix.length);
+
+    var data = {
+        
+        packageNames: movies,
+         matrix: dependencyMatrix
+        };
+    
+    d3.select('#chart_placeholder')
+    .datum(data)
+    .call(chart);
+
+    
     </script>
 
+    
+    
+
+    
 </body> 
 </html>

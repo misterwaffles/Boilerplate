@@ -141,7 +141,7 @@ function doneSorting(movies) {
        // console.log(currCommon);
 
         result.list.push({"title": curr[0], "likes": curr[1], "common": currCommon});
-       // console.log("done with " + i);
+        //console.log(result);
     }
 
     
